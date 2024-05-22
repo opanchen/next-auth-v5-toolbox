@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import { Toaster } from "@/components/ui/sonner";
 
 import "./globals.css";
+import { cn } from "@/lib/utils";
 
 const font = Inter({ subsets: ["latin"] });
 
@@ -19,7 +20,7 @@ export default async function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={font.className}>
+      <body className={cn("min-h-screen", font.className)}>
         <Toaster />
         {children}
       </body>

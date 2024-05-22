@@ -12,10 +12,10 @@ const ProtectedLayout = async ({ children }: ProtectedLayoutProps) => {
   const session = await auth();
   return (
     <SessionProvider session={session}>
-      <div className="h-full w-full flex flex-col gap-y-10 items-center justify-center bg-blue-gradient">
+      <main className="overflow-auto h-full w-full flex flex-col gap-y-10 items-center py-4 md:py-8 xl:py-12 bg-blue-gradient">
         <Navbar />
         {children}
-      </div>
+      </main>
     </SessionProvider>
   );
 };
