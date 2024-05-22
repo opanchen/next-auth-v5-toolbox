@@ -6,3 +6,5 @@ export const logout = async () => {
   // some server stuff if necessary
   await signOut();
 };
+
+// ! not working as expected, so just use signOut() inside LogoutButton component.
