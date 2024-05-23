@@ -1,36 +1,88 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next Auth (v5) Toolbox
 
-## Getting Started
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) and [`Auth.js`](https://authjs.dev/), that includes reuseable components, hooks and utils to use auth in server & client components, api routes and server actions.
 
-First, run the development server:
+**[VIEW DEMO](https://next-auth-v5-toolbox.vercel.app/)**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+![App image](./public/docs/home-page-view.jpg)
+
+---
+
+## Key Features
+
+- Next-auth v5 (Auth.js)
+- Next.js 14 with server actions
+- Credentials Provider
+- OAuth Provider (login with Google & GitHub)
+- Email verification
+- Strict Two factor verification (2FA)
+- Forgot password functionality
+- User roles (Admin & User) & Role Gate for rendering protected content
+- `useCurrentUser` & `useRole` hooks
+- Protected routes
+- UI examples with server and client components
+- Change user information & configuration in Settings page
+
+## Project Organization & File Colocation
+
+```
+|-- actions --> server actions
+|-- app --> pages/layouts and routing
+    |-- (protected) --> special route-group for inner UI
+        |-- _components --> NOT-reusable components folder
+        |-- admin --> protected content for Admin Role only
+        |-- client --> UI-example as client component
+        |-- server --> UI-example as server component
+        |-- settings --> settings page to change user info
+    |-- api --> general server api routes for some purposes
+        |-- admin --> protected api route for Admin role only
+        |-- auth/[...nextauth] --> next-auth configuration api route
+    |-- auth --> base authentication route with different endpoints
+        |-- error
+        |-- login
+        |-- new-password
+        |-- new-verification
+        |-- register
+        |-- reset
+|-- components --> general folder with reusable components
+    |-- auth --> custom reusable components used for auth purposes
+    |-- ui --> reusable components imported from Chadcn/UI lib
+|-- data --> utilities database get-requests
+|-- hooks --> custom hooks
+|-- lib --> special utilities for work with database and additional services
+|-- prisma --> data modeling and ORM configuration
+|-- public --> static files
+|-- schemas --> data-validation schemas for client & server sides
+-- auth.config.ts --> auth-providers configuration
+-- auth.ts --> next-auth callbacks & session configuration
+-- middleware.ts --> main next.js middleware config
+-- next-auth.d.ts --> additional TS-module declarations
+-- routes.ts --> general configuration for different types of routes
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Technology stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Main technologies**:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+  - Next.js (app router)
+  - Auth.js v5
+  - Node.js
+  - React
+  - TypeScript
+  - Tailwind CSS
+  - ShadcnUi
+  - Prisma
+  - PostgresQL (deploy with [Neon](https://neon.tech/))
 
-## Learn More
+- **Additional dependencies**:
 
-To learn more about Next.js, take a look at the following resources:
+  - Nodemailer
+  - React Hook Form
+  - Zod
+  - Bcryptjs
+  - React-Spinners
+  - React-Icons
+  - Sonner
+  - UUID
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+  ...full list of dependencies is available in `package.json` file.

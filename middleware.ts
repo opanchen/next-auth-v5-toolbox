@@ -40,11 +40,6 @@ export default auth((req) => {
   }
 
   return;
-
-  //   if (!req.auth) {
-  //     const url = req.url.replace(req.nextUrl.pathname, "/login");
-  //     return Response.redirect(url);
-  //   }
 });
 
 export const config = {
